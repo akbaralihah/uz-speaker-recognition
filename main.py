@@ -1,4 +1,11 @@
 import os
+# =============================
+# 1️⃣ Environment & Config
+# =============================
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["TRANSFORMERS_VERBOSITY"] = "error"
+os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
+
 import logging
 import warnings
 import torch
@@ -17,14 +24,6 @@ from pyannote.audio import Pipeline
 from speaker_service import identify_speaker
 from speaker_register import router as speaker_router
 from config import STT_MODEL, DIARIZATION_MODEL
-
-# =============================
-# 1️⃣ Environment & Config
-# =============================
-
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-os.environ["TRANSFORMERS_VERBOSITY"] = "error"
-os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
 
 warnings.filterwarnings("ignore")
 transformers_logging.set_verbosity_error()
